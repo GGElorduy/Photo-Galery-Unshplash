@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+}
+:root {
+  --rtc-color-000: white;
+  --rtc-color-100: #3a3a3a;
+  --rtc-color-200: #9b9b9bb6;
+  --rtc-color-300: black;
+  --rtc-header-background: var(--rtc-color-000);
+  --rtc-body-background: var(--rtc-color-000);
+  --rtc-card-background: var(--rtc-color-200);
+  --rtc-section-background: var(--rtc-color-000);
+  --rtc-footer-background: var(--rtc-color-100);
+
+  --rtc-margin-xs: 10px;
+  --rtc-margin-s: 20px;
+  --rtc-margin-m: 30px;
+  --rtc-margin-l: 40px;
+  --rtc-margin-xl: 50px;
+  --rtc-margin-xxl: 60px;
+
+  --rtc-padding-xs: 10px;
+  --rtc-padding-s: 20px;
+  --rtc-padding-flex: 30px;
+  --rtc-padding-l: 40px;
+  --rtc-padding-xl: 50px;
+  --rtc-padding-xxl: 60px;
+
+  --rtc-gap-header: 10px;
+  --rtc-gap-s: 20px;
+  --rtc-gap-m: 30px;
+  --rtc-gap-l: 40px;
+  --rtc-gap-tarjetas: 50px;
+  --rtc-header-radius: 10px;
+  --rtc-product-radius: 20px;
+  --rtc-border-radius-max: 40px;
+}

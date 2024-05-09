@@ -1,0 +1,102 @@
+#Mainheader {
+  position: fixed;
+  padding: 4px 16px;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+}
+#Mainheader > a {
+  color: black;
+}
+.logo {
+  width: 48px;
+  height: 48px;
+}
+.logo > img {
+  max-width: 48px;
+  max-height: 48px;
+  object-fit: cover;
+  object-position: center;
+}
+.buttonEnlace1 {
+  display: flex;
+  background-color: black;
+  border-radius: 5px;
+  margin: auto;
+  height: 48px;
+  min-width: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonEnlace1 span {
+  color: white;
+}
+.buttonEnlace2 {
+  display: flex;
+  border-radius: 5px;
+  margin: auto;
+  height: 48px;
+  min-width: 60px;
+  align-items: center;
+  justify-content: center;
+}
+.searchBar {
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(235, 231, 231);
+  border-radius: 10px;
+  flex-grow: 1;
+}
+.searchBar > img {
+  height: 16px;
+  width: 16px;
+}
+.searchBar > input {
+  flex: 1 1 auto;
+  height: 48px;
+  text-decoration: none;
+  border: none;
+  width: 90%;
+  background-color: rgb(235, 231, 231);
+  border-radius: 10px;
+}
+.divBut {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+.divBut:hover {
+  background-color: rgb(235, 231, 231);
+}
+.divBut > img {
+  max-height: 24px;
+  max-width: 24px;
+}
+.imgSearch {
+  position: relative;
+  left: 5px;
+}
+.imgSearch2 {
+  display: none;
+}
+.closingIcon {
+  display: none;
+}
+.closingIcon2 {
+  display: block;
+}
+.inputclass {
+  position: relative;
+  left: 5px;
+  padding-left: 10px;
+  margin-left: 10px;
+}
