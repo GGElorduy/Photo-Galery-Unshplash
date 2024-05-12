@@ -1,3 +1,18 @@
+a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Hereda el color del texto del elemento padre */
+  display: inline; /* Hace que los enlaces se comporten como elementos de línea */
+  font-weight: bold; /* Establece el peso de la fuente en negrita */
+}
+
+button {
+  border: none;
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Hereda el color del texto del elemento padre */
+  display: inline; /* Hace que los enlaces se comporten como elementos de línea */
+  font-weight: bold; /* Establece el peso de la fuente en negrita */
+}
+
 #Mainheader {
   position: fixed;
   padding: 4px 16px;
@@ -7,6 +22,7 @@
   align-items: center;
   gap: 8px;
   background-color: white;
+  z-index: 20;
 }
 #Mainheader > a {
   color: black;
@@ -21,43 +37,50 @@
   object-fit: cover;
   object-position: center;
 }
-.buttonEnlace1 {
+
+.buttonEnlacePasivo {
   display: flex;
-  background-color: black;
-  border-radius: 5px;
+  border-radius: 20px;
   margin: auto;
   height: 48px;
   min-width: 60px;
   align-items: center;
   justify-content: center;
+  background-color: white;
 }
-
-.buttonEnlace1 span {
+.buttonEnlaceFoco {
+  border: none;
+  display: flex;
+  border-radius: 20px;
+  margin: auto;
+  height: 48px;
+  min-width: 60px;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
   color: white;
 }
-.buttonEnlace2 {
-  display: flex;
-  border-radius: 5px;
-  margin: auto;
-  height: 48px;
-  min-width: 60px;
-  align-items: center;
-  justify-content: center;
+.buttonEnlaceFoco > span {
+  color: white;
 }
 .searchBar {
   height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(235, 231, 231);
   border-radius: 10px;
   flex-grow: 1;
 }
 .searchBar > img {
+  position: relative;
+  left: var(--rtc-padding-l);
   height: 16px;
   width: 16px;
+  z-index: 2;
 }
 .searchBar > input {
+  padding-left: var(--rtc-padding-l);
+
   flex: 1 1 auto;
   height: 48px;
   text-decoration: none;

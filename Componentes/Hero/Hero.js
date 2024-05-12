@@ -1,4 +1,7 @@
 import './Hero.css'
+import { clearMain, buildMainImage } from '../MainPhoto/MainPhoto'
+import { profileinfo } from '../Account/Account'
+
 const API_KEY = 'Z4QI2mAd5tAL0f6adzNFg5UCZR4IsjLWQJW_POdp49k'
 export let imgContainer = document.querySelector('#imgContainer')
 export const suggestedSearches = document.getElementById('suggestedSearches')
@@ -15,6 +18,14 @@ const photoCategories = [
   'Fashion photography',
   'Sports photography'
 ]
+//Funcion para guardar las fotos en profile
+const savePic = (img, boton, span) => {
+  if (boton.className === 'save') {
+    profileinfo.savedPhotos.push(img)
+    boton.className = 'saved'
+    span.textContent = 'Saved'
+  }
+}
 
 // Funcion para sacar un array con elementos aleatorios. (se utiiza para la creacion de botones de sugerencia)
 const getRandomElementsFromArray = (array, numElements) => {
@@ -51,7 +62,6 @@ export const searchImages = (query) => {
         message.innerText = ''
         suggestedSearches.innerHTML = ''
         renderImages(data.results)
-        console.log(data.results)
       }
     })
     .catch((error) => console.error(error))
@@ -61,27 +71,37 @@ export const searchImages = (query) => {
 export const renderImages = (data) => {
   imgContainer.innerHTML = ''
   data.forEach((image) => {
-    let divPic = document.createElement('div')
-    let pic = document.createElement('img')
-    // Calcular la relación de aspecto de la foto
+    const divPic = document.createElement('div')
+    const pic = document.createElement('img')
+    const saveDiv = document.createElement('div')
+    const saveSpan = document.createElement('span')
+    const imgContainer = document.querySelector('#imgContainer')
 
-    let imgRatio = image.width / image.height
-    console.log(image.alt_description)
-
-    console.log(Math.round(imgRatio))
-
-    // Decidir cuántas columnas debería ocupar la foto en función de su relación de aspecto
-    let columnas = imgRatio > 1 ? 'span ' + Math.round(imgRatio) : 'span 1'
-
-    // Aplicar la propiedad grid-column
-    divPic.style.gridRow = columnas
+    imgContainer.className = 'imgContainerClass'
 
     imgContainer.appendChild(divPic)
     divPic.appendChild(pic)
+    divPic.appendChild(saveDiv)
+    saveDiv.appendChild(saveSpan)
+
+    saveSpan.textContent = 'Save'
     divPic.className = 'item'
+    if (profileinfo.savedPhotos.find((save) => save.id === image.id)) {
+      saveDiv.className = 'saved'
+    } else {
+      saveDiv.className = 'save'
+    }
+
+    saveDiv.addEventListener('click', () => savePic(image, saveDiv, saveSpan))
 
     pic.src = image.urls.regular
     pic.alt = image.alt_description
+
+    let imgRatio = image.width / image.height
+    let columnas = imgRatio > 1 ? 'span ' + Math.round(imgRatio) : 'span 1'
+    divPic.style.gridRow = columnas
+
+    divPic.addEventListener('click', () => buildMainImage(pic.src))
   })
 }
 // Función para buscar sugerencias
