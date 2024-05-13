@@ -33,11 +33,13 @@ const renderSaves = (data) => {
 }
 //Esconde la seccion de account
 export const hideAccount = () => {
+  document.querySelector('#account').className = 'other'
   document.querySelector('#account').innerHTML = ''
-  document.querySelector('#account').className = 'accountSectionClassHide'
 }
 //Genera la seccion de account
 export const openAccount = () => {
+  message.innerText = ''
+  suggestedSearches.innerHTML = ''
   document.querySelector('#imgContainer').className = 'imgContainerHide'
   clearMain()
 
@@ -58,8 +60,6 @@ export const openAccount = () => {
   accountSection.appendChild(profilePic)
   accountSection.appendChild(profileName)
   accountSection.appendChild(divSaved)
-
-  console.log(profileinfo.savedPhotos[0])
 
   renderSaves(profileinfo.savedPhotos)
 }

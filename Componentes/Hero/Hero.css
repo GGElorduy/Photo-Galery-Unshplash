@@ -4,14 +4,12 @@
   padding-right: 80px;
 }
 
-#imgContainer {
-}
 .imgContainerClass {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
-  grid-auto-rows: 250px; /* Establecer altura fija para las filas */
-  /* Columnas automáticas, cada una con un ancho mínimo de 200px */
+  grid-auto-rows: 250px;
+
   gap: 15px;
   min-width: 230px;
   margin-bottom: var(--rtc-margin-xxl);
@@ -27,36 +25,34 @@
   min-height: 100%;
   max-height: 100%;
   border-radius: 10px;
-  transition: transform 0.3s ease; /* Transición suave */
+  transition: transform 0.3s ease;
 }
 
 .item:hover {
-  cursor: pointer; /* Cambia el cursor a una mano al hacer hover */
-  transform: scale(1.05); /* Agranda la imagen al hacer hover */
+  cursor: pointer;
+  transform: scale(1.05);
   z-index: 1;
 }
 .item > img:hover {
-  filter: grayscale(50%); /* Incrementa la saturación al hacer hover */
+  filter: grayscale(50%);
 }
-
-.save {
+.absolute {
   position: absolute;
-  top: 5%; /* Alinea el elemento en la parte superior del contenedor padre (.item) */
+  top: 5%;
   right: 5%;
+}
+.save {
   background-color: rgb(233, 45, 45);
   color: white;
   z-index: 2;
-  padding: 5px 15px; /* Ajusta el padding según sea necesario */
+  padding: 5px 15px;
   border-radius: 8px;
 }
 .saved {
-  position: absolute;
-  top: 5%; /* Alinea el elemento en la parte superior del contenedor padre (.item) */
-  right: 5%;
   background-color: black;
   color: white;
   z-index: 2;
-  padding: 5px 15px; /* Ajusta el padding según sea necesario */
+  padding: 5px 15px;
   border-radius: 8px;
 }
 #message {

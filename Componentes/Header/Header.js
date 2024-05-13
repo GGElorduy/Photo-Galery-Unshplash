@@ -3,7 +3,7 @@ import { suggestedSearches, searchImages, imgContainer } from '../Hero/Hero'
 import { clearMain } from '../MainPhoto/MainPhoto'
 import { openAccount, hideAccount } from '../Account/Account'
 import './Header.css'
-
+export let lastQuery = ''
 //FUNCION PARA CREAR EL LOGO
 const Logo = (nodoPadre) => {
   const LogoHTML = document.createElement('div')
@@ -29,7 +29,7 @@ const ButtonEnlace = (nodoPadre = document, text = 'Pepe', id = '') => {
 }
 
 // AQUI METEMOS EL FOCUS AL BOTON
-const FocusButton = (target) => {
+/* const FocusButton = (target) => {
   let arrayButtons = [
     ...document.querySelectorAll('.buttonEnlacePasivo'),
     ...document.querySelectorAll('.buttonEnlaceFoco')
@@ -42,7 +42,7 @@ const FocusButton = (target) => {
     }
     target.className = 'buttonEnlaceFoco'
   }
-}
+} */
 
 //FUNCION PARA CREAR LA BARRA DE BUSCADOR
 const SearchBar = (nodoPadre) => {
@@ -72,6 +72,7 @@ const SearchBar = (nodoPadre) => {
   inputSearch.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       const query = inputSearch.value.trim()
+      lastQuery = query
       clearMain()
       hideAccount()
       if (query !== '') {
@@ -91,14 +92,21 @@ const SearchBar = (nodoPadre) => {
 const ButtonIcon = (
   nodoPadre,
   img = 'https://res.cloudinary.com/dbnbfpype/image/upload/v1708077411/Proyecto%20-%20Tienda/assets/img/account_rgupgw.png',
-  pepe
+  id
 ) => {
+  /* 
+  Parametros: 
+  primer : El elemento padre al que pertenecen los botones creados
+  segundo: la url de la imagen
+  tercero: id. TIENE QUE SER UNICA
+  
+  */
   const divBut = document.createElement('div')
   const iconBut = document.createElement('img')
 
   divBut.className = 'divBut'
   iconBut.src = img
-  iconBut.id = pepe
+  iconBut.id = id
   nodoPadre.appendChild(divBut)
   divBut.appendChild(iconBut)
 }
@@ -128,11 +136,12 @@ export const Header = () => {
 
   const Home = document.querySelector('#home')
   Home.addEventListener('click', () => {
+    lastQuery = ''
     searchImages()
     hideAccount()
     clearMain()
   })
-  FocusButton()
+
   document
     .querySelector('#accountBut')
     .addEventListener('click', () => openAccount())

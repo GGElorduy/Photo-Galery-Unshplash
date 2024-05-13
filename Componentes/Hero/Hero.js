@@ -18,11 +18,20 @@ const photoCategories = [
   'Fashion photography',
   'Sports photography'
 ]
+
 //Funcion para guardar las fotos en profile
-const savePic = (img, boton, span) => {
-  if (boton.className === 'save') {
+export const savePic = (img, boton, span) => {
+  //* Si el boton esta negro pasa a rojo y vicebersa. (boton del main)
+  const indice = profileinfo.savedPhotos.findIndex(
+    (objeto) => objeto.id === img.id
+  )
+  if (indice !== -1) {
+    profileinfo.savedPhotos.splice(indice, 1)
+    boton.className = 'saveBlock'
+    span.textContent = 'Save'
+  } else {
     profileinfo.savedPhotos.push(img)
-    boton.className = 'saved'
+    boton.className = 'savedBlock'
     span.textContent = 'Saved'
   }
 }
@@ -42,6 +51,7 @@ export const searchImages = (query) => {
     .then((data) => {
       if (data.results.length === 0) {
         //Aqui vendría el mensaje de error
+        message.innerHTML = ''
         const error = document.createElement('p')
         error.textContent =
           'Lo siento, no se han encontrado ninguna imagen. Por favor, cambie el input o utilice uno de las sugerencias: '
@@ -84,16 +94,15 @@ export const renderImages = (data) => {
     divPic.appendChild(saveDiv)
     saveDiv.appendChild(saveSpan)
 
-    saveSpan.textContent = 'Save'
     divPic.className = 'item'
     if (profileinfo.savedPhotos.find((save) => save.id === image.id)) {
       saveDiv.className = 'saved'
+      saveSpan.textContent = 'Saved'
     } else {
+      saveSpan.textContent = 'Save'
       saveDiv.className = 'save'
     }
-
-    saveDiv.addEventListener('click', () => savePic(image, saveDiv, saveSpan))
-
+    saveDiv.classList.add('absolute')
     pic.src = image.urls.regular
     pic.alt = image.alt_description
 
@@ -101,7 +110,7 @@ export const renderImages = (data) => {
     let columnas = imgRatio > 1 ? 'span ' + Math.round(imgRatio) : 'span 1'
     divPic.style.gridRow = columnas
 
-    divPic.addEventListener('click', () => buildMainImage(pic.src))
+    divPic.addEventListener('click', () => buildMainImage(image))
   })
 }
 // Función para buscar sugerencias
