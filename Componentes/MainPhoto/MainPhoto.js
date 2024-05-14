@@ -1,6 +1,6 @@
 import './MainPhoto.css'
 import { lastQuery } from '../Header/Header'
-import { profileinfo } from '../Account/Account'
+import { profileinfo, hideAccount } from '../Account/Account'
 import { savePic, searchImages } from '../Hero/Hero'
 
 //Variables
@@ -15,6 +15,8 @@ export let otherRelatedPics
 export const buildMainImage = (data) => {
   const mainPhoto = document.querySelector('#mainFoto')
   clearMain()
+  hideAccount()
+
   mainPhoto.classList = 'photoSection'
   const mainDiv = document.createElement('div')
   /*   let otherRelatedPics = data.description
@@ -62,8 +64,5 @@ export const buildMainImage = (data) => {
 
   saveDiv.addEventListener('click', () => {
     savePic(data, saveDiv, saveSpan)
-    const pepe = document.querySelector('#imgContainer')
-
-    savePic(pepe, saveDiv, saveSpan)
   })
 }

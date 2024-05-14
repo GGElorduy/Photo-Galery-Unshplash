@@ -9,6 +9,7 @@
   width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
   grid-auto-rows: 250px;
+  justify-content: center;
 
   gap: 15px;
   min-width: 230px;
@@ -96,4 +97,71 @@
 .mainDiv {
   border-radius: 10px;
   display: flex;
+}
+@media (max-width: 750px) {
+  #Hero {
+    padding: 0;
+    padding-top: 30px;
+  }
+
+  .imgContainerClass {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
+    grid-auto-rows: 250px;
+    justify-content: center;
+
+    gap: 15px;
+    margin-bottom: var(--rtc-margin-xxl);
+  }
+
+  .item {
+    overflow: hidden;
+    z-index: 3;
+
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    z-index: 1;
+  }
+  .item > img:hover {
+    filter: grayscale(50%);
+  }
+  .extended > img {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+  }
+  .absolute {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+  .save {
+    display: none;
+  }
+  .saved {
+    display: none;
+  }
+  #message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8%;
+  }
+  #suggestedSearches {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 8%;
+  }
+
+  .imgContainerHide {
+    display: none;
+  }
 }

@@ -103,11 +103,17 @@ export const renderImages = (data) => {
       saveDiv.className = 'save'
     }
     saveDiv.classList.add('absolute')
-    pic.src = image.urls.regular
+    pic.src = image.urls.small
     pic.alt = image.alt_description
 
-    let imgRatio = image.width / image.height
-    let columnas = imgRatio > 1 ? 'span ' + Math.round(imgRatio) : 'span 1'
+    let imgRatio = image.height / image.width
+    let columnas
+    if (imgRatio > 1) {
+      columnas = 'span ' + Math.round(imgRatio)
+      divPic.classList.add('extended')
+    } else {
+      columnas = 'span 1'
+    }
     divPic.style.gridRow = columnas
 
     divPic.addEventListener('click', () => buildMainImage(image))

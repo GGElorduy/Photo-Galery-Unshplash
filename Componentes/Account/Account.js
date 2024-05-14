@@ -16,7 +16,7 @@ const renderSaves = (data) => {
     const imgContainer = document.querySelector('#saved')
 
     imgContainer.className = 'savesContainerClass'
-    imgContainer.addEventListener('click', () => buildMainImage(pic.src))
+    divPic.addEventListener('click', () => buildMainImage(image))
 
     imgContainer.appendChild(divPic)
     divPic.appendChild(pic)

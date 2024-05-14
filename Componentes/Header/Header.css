@@ -64,6 +64,7 @@ button {
   color: white;
 }
 .searchBar {
+  min-width: 120px;
   height: 48px;
   display: flex;
   justify-content: center;
@@ -122,4 +123,49 @@ button {
   left: 5px;
   padding-left: 10px;
   margin-left: 10px;
+}
+.iconNoDrop {
+  display: flex;
+  direction: row;
+}
+.dropdownMenu {
+  display: none;
+}
+.dropdownMenu > img {
+  width: 24px;
+}
+#closeMenu {
+  display: none;
+}
+@media (max-width: 750px) {
+  .inputclass {
+    left: 0;
+  }
+  .dropdownMenu {
+    display: block;
+  }
+  .divButs {
+    display: none;
+  }
+  .visible {
+    height: 100%;
+    width: 100%;
+    background-color: aquamarine;
+  }
+  .invisible {
+    display: none;
+  }
+  .iconNoDrop {
+    display: none;
+    direction: row;
+  }
+  .iconDrop {
+    border-radius: 10px;
+    background-color: rgb(218, 218, 218);
+    position: relative;
+    top: 80px;
+  }
+  #closeMenu {
+    display: flex;
+  }
 }

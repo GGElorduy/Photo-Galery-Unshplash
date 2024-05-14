@@ -16,7 +16,7 @@ const Logo = (nodoPadre) => {
 }
 
 //FUNCION PARA CREAR BOTONES (Navegación)
-const ButtonEnlace = (nodoPadre = document, text = 'Pepe', id = '') => {
+const ButtonEnlace = (nodoPadre = document, text = 'Boton', id = '') => {
   const buttonText = document.createElement('span')
   const buttonLink = document.createElement('button')
 
@@ -28,8 +28,8 @@ const ButtonEnlace = (nodoPadre = document, text = 'Pepe', id = '') => {
   buttonLink.addEventListener('click', () => FocusButton(buttonLink))
 }
 
-// AQUI METEMOS EL FOCUS AL BOTON
-/* const FocusButton = (target) => {
+// AQUI METEMOS EL FOCUS(Colorcitonegro) AL BOTON
+const FocusButton = (target) => {
   let arrayButtons = [
     ...document.querySelectorAll('.buttonEnlacePasivo'),
     ...document.querySelectorAll('.buttonEnlaceFoco')
@@ -42,7 +42,7 @@ const ButtonEnlace = (nodoPadre = document, text = 'Pepe', id = '') => {
     }
     target.className = 'buttonEnlaceFoco'
   }
-} */
+}
 
 //FUNCION PARA CREAR LA BARRA DE BUSCADOR
 const SearchBar = (nodoPadre) => {
@@ -110,6 +110,44 @@ const ButtonIcon = (
   nodoPadre.appendChild(divBut)
   divBut.appendChild(iconBut)
 }
+//! dropdownMenu solo visible en la mediaquery .divButs invisibles en la media query salvo vuando hacemos click
+const MenuDesplegable = () => {
+  const menuBut = document.createElement('div')
+  const menuIc = document.createElement('img')
+
+  menuBut.className = 'dropdownMenu'
+  ;(menuIc.src =
+    'https://res.cloudinary.com/dbnbfpype/image/upload/v1715681372/menu-de-puntos_pgkymd.png'),
+    (menuBut.id = 'menu')
+
+  document.querySelector('#Mainheader').appendChild(menuBut)
+  menuBut.appendChild(menuIc)
+  menuBut.addEventListener('click', () => {
+    menuBut.className = 'invisible'
+    drop.className = 'iconDrop'
+  })
+
+  const drop = document.querySelector('#drop')
+
+  const closeBut = document.createElement('div')
+  const closeIc = document.createElement('img')
+
+  closeBut.className = 'closeBut'
+  closeIc.src =
+    'https://res.cloudinary.com/dbnbfpype/image/upload/v1714727007/cerrar-el-simbolo-de-la-cruz-en-un-circulo_n63eqz.png'
+  closeBut.id = 'closeMenu'
+  drop.appendChild(closeBut)
+  closeBut.appendChild(closeIc)
+
+  const close = document.querySelector('#closeMenu')
+
+  close.className = 'divBut'
+
+  closeBut.addEventListener('click', () => {
+    drop.className = 'iconNoDrop'
+    menuBut.className = 'dropdownMenu'
+  })
+}
 //FUNCION PARA CREAR EL HEADER POR COMPLETO
 export const Header = () => {
   const HeaderHTML = document.querySelector('#Mainheader')
@@ -118,22 +156,27 @@ export const Header = () => {
   ButtonEnlace(HeaderHTML, 'Home', 'home')
   ButtonEnlace(HeaderHTML, 'Create', 'create')
   SearchBar(HeaderHTML)
+  const drop = document.createElement('div')
+  drop.id = 'drop'
+  drop.className = 'iconNoDrop'
+  HeaderHTML.appendChild(drop)
   ButtonIcon(
-    HeaderHTML,
+    drop,
     'https://res.cloudinary.com/dbnbfpype/image/upload/v1714471518/Proyecto%20-%20Tienda/assets/img/notificacion_wtny1m.png',
     'notification'
   )
   ButtonIcon(
-    HeaderHTML,
+    drop,
     'https://res.cloudinary.com/dbnbfpype/image/upload/v1714470804/Proyecto%20-%20Tienda/assets/img/2282268_fyfpkw.png',
     'chat'
   )
   ButtonIcon(
-    HeaderHTML,
+    drop,
     'https://res.cloudinary.com/dbnbfpype/image/upload/v1708077411/Proyecto%20-%20Tienda/assets/img/account_rgupgw.png',
     'accountBut'
   )
-
+  MenuDesplegable(HeaderHTML)
+  FocusButton()
   const Home = document.querySelector('#home')
   Home.addEventListener('click', () => {
     lastQuery = ''
