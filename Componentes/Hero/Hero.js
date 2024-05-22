@@ -44,14 +44,16 @@ const getRandomElementsFromArray = (array, numElements) => {
 
 // Función para buscar imágenes
 export const searchImages = (query) => {
-  const url = `https://api.unsplash.com/search/photos?query=${query}&client_id=${API_KEY}`
-
+  //const url = `https://api.unsplash.com/search/photos?query=${query}&client_id=${API_KEY}`
+  const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=30&client_id=${API_KEY}`
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
       if (data.results.length === 0) {
         //Aqui vendría el mensaje de error
         message.innerHTML = ''
+        suggestedSearches.innerHTML = ''
+
         const error = document.createElement('p')
         error.textContent =
           'Lo siento, no se han encontrado ninguna imagen. Por favor, cambie el input o utilice uno de las sugerencias: '

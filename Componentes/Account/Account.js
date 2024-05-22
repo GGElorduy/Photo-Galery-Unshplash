@@ -8,29 +8,6 @@ export let profileinfo = {
   savedPhotos: []
 }
 
-//Renderiza las fotos guardadas
-const renderSaves = (data) => {
-  for (const image of data) {
-    const divPic = document.createElement('div')
-    const pic = document.createElement('img')
-    const imgContainer = document.querySelector('#saved')
-
-    imgContainer.className = 'savesContainerClass'
-    divPic.addEventListener('click', () => buildMainImage(image))
-
-    imgContainer.appendChild(divPic)
-    divPic.appendChild(pic)
-
-    divPic.className = 'item'
-
-    pic.src = image.urls.regular
-    pic.alt = image.alt_description
-
-    let imgRatio = image.width / image.height
-    let columnas = imgRatio > 1 ? 'span ' + Math.round(imgRatio) : 'span 1'
-    divPic.style.gridRow = columnas
-  }
-}
 //Esconde la seccion de account
 export const hideAccount = () => {
   document.querySelector('#account').className = 'other'
@@ -63,3 +40,26 @@ export const openAccount = () => {
 
   renderSaves(profileinfo.savedPhotos)
 }
+//Renderiza las fotos guardadas
+/* const renderSaves = (data) => {
+  for (const image of data) {
+    const divPic = document.createElement('div')
+    const pic = document.createElement('img')
+    const imgContainer = document.querySelector('#saved')
+
+    imgContainer.className = 'savesContainerClass'
+    divPic.addEventListener('click', () => buildMainImage(image))
+
+    imgContainer.appendChild(divPic)
+    divPic.appendChild(pic)
+
+    divPic.className = 'item'
+
+    pic.src = image.urls.regular
+    pic.alt = image.alt_description
+
+    let imgRatio = image.width / image.height
+    let columnas = imgRatio > 1 ? 'span ' + Math.round(imgRatio) : 'span 1'
+    divPic.style.gridRow = columnas
+  }
+} */
